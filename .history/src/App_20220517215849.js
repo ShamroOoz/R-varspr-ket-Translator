@@ -20,28 +20,16 @@ function App() {
 
   const encoded = useMemo(
     () => () => {
-      let consonants = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
-      let new_word = [];
-      for (let x of textToTranslate) {
-        consonants.includes(x) ? new_word.push(x + "o" + x) : new_word.push(x);
-      }
-      return new_word.join("");
+      console.log("encoded");
+      return textToTranslate;
     },
     [textToTranslate]
   );
 
   const decoded = useMemo(
     () => () => {
-      let consonants = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
-      let new_word = "";
-      let index = 0;
-      while (index < textToTranslate.length) {
-        new_word += textToTranslate[index];
-        consonants.includes(textToTranslate[index])
-          ? (index += 3)
-          : (index += 1);
-      }
-      return new_word;
+      console.log("decoded");
+      return textToTranslate;
     },
     [textToTranslate]
   );
@@ -49,9 +37,6 @@ function App() {
   const handleClick = () => {
     setInputLanguage(outputLanguage);
     setOutputLanguage(inputLanguage);
-    if (textToTranslate && translatedText) {
-      setTextToTranslate(translatedText);
-    }
   };
 
   return (

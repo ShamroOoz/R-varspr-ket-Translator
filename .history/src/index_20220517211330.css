@@ -47,9 +47,9 @@ textarea {
   padding: 15px;
   cursor: pointer;
 }
-.arrow-container svg:hover {
+/* .arrow-container svg:hover {
   fill: #fff;
-}
+} */
 
 .arrow-container svg {
   width: 26px;
@@ -91,8 +91,4 @@ input {
   top: -156px;
   font-size: 50px;
   color: #bdc1c6;
-  cursor: pointer;
-}
-.input .delete:hover {
-  color: #8ab4f8;
 }

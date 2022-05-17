@@ -8,7 +8,7 @@ function App() {
   const [outputLanguage, setOutputLanguage] = useState("Rövarspråket");
   const [textToTranslate, setTextToTranslate] = useState("");
   const [translatedText, setTranslatedText] = useState("");
-
+  let consonants = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
   useEffect(() => {
     if (textToTranslate) {
       setTranslatedText(
@@ -20,7 +20,6 @@ function App() {
 
   const encoded = useMemo(
     () => () => {
-      let consonants = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
       let new_word = [];
       for (let x of textToTranslate) {
         consonants.includes(x) ? new_word.push(x + "o" + x) : new_word.push(x);

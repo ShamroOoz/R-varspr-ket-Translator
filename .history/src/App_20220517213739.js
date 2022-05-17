@@ -1,5 +1,5 @@
 /* eslint-disable react/style-prop-object */
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import TextBox from "./components/TextBox";
 import Arrows from "./components/Arrows";
 
@@ -10,7 +10,8 @@ function App() {
   const [translatedText, setTranslatedText] = useState("");
 
   useEffect(() => {
-    if (textToTranslate) {
+    if (textToTranslate.length) {
+      // console.log("response", data);
       setTranslatedText(
         outputLanguage === "Rövarspråket" ? encoded() : decoded()
       );
@@ -18,40 +19,17 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [textToTranslate]);
 
-  const encoded = useMemo(
-    () => () => {
-      let consonants = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
-      let new_word = [];
-      for (let x of textToTranslate) {
-        consonants.includes(x) ? new_word.push(x + "o" + x) : new_word.push(x);
-      }
-      return new_word.join("");
-    },
-    [textToTranslate]
-  );
+  const encoded = () => {
+    return textToTranslate;
+  };
 
-  const decoded = useMemo(
-    () => () => {
-      let consonants = "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz";
-      let new_word = "";
-      let index = 0;
-      while (index < textToTranslate.length) {
-        new_word += textToTranslate[index];
-        consonants.includes(textToTranslate[index])
-          ? (index += 3)
-          : (index += 1);
-      }
-      return new_word;
-    },
-    [textToTranslate]
-  );
+  const decoded = () => {
+    return textToTranslate;
+  };
 
   const handleClick = () => {
     setInputLanguage(outputLanguage);
     setOutputLanguage(inputLanguage);
-    if (textToTranslate && translatedText) {
-      setTextToTranslate(translatedText);
-    }
   };
 
   return (
