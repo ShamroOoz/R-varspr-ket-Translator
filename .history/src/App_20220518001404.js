@@ -56,12 +56,10 @@ function App() {
 
   const loadJokelistner = async () => {
     try {
-      const res = await fetch(
-        "https://v2.jokeapi.dev/joke/Programming?type=single"
-      );
-      if (res.ok) {
-        const { joke } = await res.json();
-        setTextToTranslate(joke);
+      const res = await fetch("https://v2.jokeapi.dev/joke/Programming");
+      if (response.ok) {
+        const joke = await res.json();
+        console.log(joke);
       }
     } catch (error) {
       console.log(error);

@@ -61,6 +61,7 @@ function App() {
       );
       if (res.ok) {
         const { joke } = await res.json();
+
         setTextToTranslate(joke);
       }
     } catch (error) {

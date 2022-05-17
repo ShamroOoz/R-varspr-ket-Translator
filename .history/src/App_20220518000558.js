@@ -54,18 +54,8 @@ function App() {
     }
   };
 
-  const loadJokelistner = async () => {
-    try {
-      const res = await fetch(
-        "https://v2.jokeapi.dev/joke/Programming?type=single"
-      );
-      if (res.ok) {
-        const { joke } = await res.json();
-        setTextToTranslate(joke);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const loadJokelistner = () => {
+    console.log("Load Joke");
   };
 
   return (
@@ -88,7 +78,7 @@ function App() {
           translatedText={translatedText}
         />
       </div>
-      <button className="button" type="button" onClick={loadJokelistner}>
+      <button class="button" type="button" onClick={loadJokelistner}>
         Joke Of The Day
       </button>
     </>

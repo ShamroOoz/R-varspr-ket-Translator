@@ -60,8 +60,8 @@ function App() {
         "https://v2.jokeapi.dev/joke/Programming?type=single"
       );
       if (res.ok) {
-        const { joke } = await res.json();
-        setTextToTranslate(joke);
+        const joke = await res.json();
+        console.log(joke);
       }
     } catch (error) {
       console.log(error);
