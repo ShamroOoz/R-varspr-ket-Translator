@@ -1,10 +1,13 @@
 /* eslint-disable react/style-prop-object */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextBox from "./components/TextBox";
 import Arrows from "./components/Arrows";
 import Button from "./components/Button";
+import Modal from "./components/Modal";
+import axios from "axios";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
   const [languages, setLanguages] = useState(null);
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Polish");
@@ -18,6 +21,7 @@ function App() {
       outputLanguage,
       inputLanguage,
     };
+
     console.log("response", data);
     setTranslatedText(data);
   };
@@ -29,24 +33,30 @@ function App() {
 
   return (
     <div className="app">
-      <TextBox
-        style="input"
-        selectedLanguage={inputLanguage}
-        setTextToTranslate={setTextToTranslate}
-        textToTranslate={textToTranslate}
-        setTranslatedText={setTranslatedText}
-      />
-      <div className="arrow-container" onClick={handleClick}>
-        <Arrows />
-      </div>
-      <TextBox
-        style="output"
-        selectedLanguage={outputLanguage}
-        translatedText={translatedText}
-      />
-      <div className="button-container" onClick={translate}>
-        <Button />
-      </div>
+      {!showModal && (
+        <>
+          <TextBox
+            style="input"
+            setShowModal={setShowModal}
+            selectedLanguage={inputLanguage}
+            setTextToTranslate={setTextToTranslate}
+            textToTranslate={textToTranslate}
+            setTranslatedText={setTranslatedText}
+          />
+          <div className="arrow-container" onClick={handleClick}>
+            <Arrows />
+          </div>
+          <TextBox
+            style="output"
+            setShowModal={setShowModal}
+            selectedLanguage={outputLanguage}
+            translatedText={translatedText}
+          />
+          <div className="button-container" onClick={translate}>
+            <Button />
+          </div>
+        </>
+      )}
     </div>
   );
 }

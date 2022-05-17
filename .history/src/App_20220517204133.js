@@ -5,6 +5,7 @@ import Arrows from "./components/Arrows";
 import Button from "./components/Button";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
   const [languages, setLanguages] = useState(null);
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Polish");
@@ -31,6 +32,7 @@ function App() {
     <div className="app">
       <TextBox
         style="input"
+        setShowModal={setShowModal}
         selectedLanguage={inputLanguage}
         setTextToTranslate={setTextToTranslate}
         textToTranslate={textToTranslate}
@@ -41,6 +43,7 @@ function App() {
       </div>
       <TextBox
         style="output"
+        setShowModal={setShowModal}
         selectedLanguage={outputLanguage}
         translatedText={translatedText}
       />

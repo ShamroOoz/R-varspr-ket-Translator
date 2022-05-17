@@ -31,6 +31,7 @@ function App() {
     <div className="app">
       <TextBox
         style="input"
+        setShowModal={setShowModal}
         selectedLanguage={inputLanguage}
         setTextToTranslate={setTextToTranslate}
         textToTranslate={textToTranslate}
@@ -41,6 +42,7 @@ function App() {
       </div>
       <TextBox
         style="output"
+        setShowModal={setShowModal}
         selectedLanguage={outputLanguage}
         translatedText={translatedText}
       />
